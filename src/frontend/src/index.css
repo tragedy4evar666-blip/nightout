@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Deep near-black with warm tint */
+    --background: 0.08 0.01 280;
+    --foreground: 0.95 0.02 280;
+    --card: 0.12 0.02 280;
+    --card-foreground: 0.95 0.02 280;
+    --popover: 0.13 0.02 280;
+    --popover-foreground: 0.95 0.02 280;
+    /* Electric violet primary */
+    --primary: 0.65 0.28 290;
+    --primary-foreground: 0.98 0.01 280;
+    --secondary: 0.16 0.04 280;
+    --secondary-foreground: 0.95 0.02 280;
+    --muted: 0.17 0.03 280;
+    --muted-foreground: 0.55 0.03 280;
+    /* Coral/hot orange accent */
+    --accent: 0.7 0.22 25;
+    --accent-foreground: 0.08 0.01 280;
+    --destructive: 0.55 0.24 15;
+    --destructive-foreground: 0.98 0.01 280;
+    --border: 0.22 0.05 280;
+    --input: 0.18 0.04 280;
+    --ring: 0.65 0.28 290;
+    --chart-1: 0.65 0.28 290;
+    --chart-2: 0.7 0.22 25;
+    --chart-3: 0.72 0.24 310;
+    --chart-4: 0.75 0.2 50;
+    --chart-5: 0.68 0.22 260;
+    --sidebar: 0.1 0.02 280;
+    --sidebar-foreground: 0.95 0.02 280;
+    --sidebar-primary: 0.65 0.28 290;
+    --sidebar-primary-foreground: 0.98 0.01 280;
+    --sidebar-accent: 0.16 0.04 280;
+    --sidebar-accent-foreground: 0.95 0.02 280;
+    --sidebar-border: 0.22 0.05 280;
+    --sidebar-ring: 0.65 0.28 290;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Rajdhani", system-ui, sans-serif;
+    background-image: radial-gradient(
+        ellipse 80% 60% at 50% -10%,
+        oklch(0.4 0.2 290 / 0.2) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 80%,
+        oklch(0.45 0.18 25 / 0.12) 0%,
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: oklch(0.12 0.02 280 / 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid oklch(0.38 0.12 290 / 0.3);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px oklch(0.65 0.28 290 / 0.45), 0 0 60px
+      oklch(0.65 0.28 290 / 0.15);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 20px oklch(0.65 0.28 290 / 0.4), 0 0 60px
+      oklch(0.65 0.28 290 / 0.12);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(0.7 0.22 25 / 0.4), 0 0 60px
+      oklch(0.7 0.22 25 / 0.12);
+  }
+
+  .text-gradient-purple {
+    background: linear-gradient(
+      135deg,
+      oklch(0.75 0.26 290),
+      oklch(0.72 0.28 310)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-nightlife {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.26 290),
+      oklch(0.75 0.22 25)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-vaporwave {
+    background: linear-gradient(
+      90deg,
+      oklch(0.72 0.28 290),
+      oklch(0.68 0.24 310),
+      oklch(0.72 0.22 25)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-bg {
+    background: linear-gradient(
+      to bottom,
+      oklch(0.08 0.01 280 / 0.3) 0%,
+      oklch(0.08 0.01 280 / 0.85) 60%,
+      oklch(0.08 0.01 280) 100%
+    );
+  }
+
+  .vaporwave-grid {
+    background-image: linear-gradient(
+        oklch(0.5 0.2 290 / 0.1) 1px,
+        transparent 1px
+      ), linear-gradient(90deg, oklch(0.5 0.2 290 / 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@layer utilities {
+  .shimmer-interactive {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-interactive::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      oklch(0.85 0.14 290 / 0.12) 48%,
+      oklch(0.85 0.14 25 / 0.1) 52%,
+      transparent 65%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-sweep 3s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
